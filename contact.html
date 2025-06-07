@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumina - Creative Solutions</title>
+    <title>Contact Us | Lumina - Creative Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Global Styles */
+        /* Reusing the same global styles from homepage */
         :root {
             --primary: #4361ee;
             --secondary: #3f37c9;
@@ -104,7 +104,7 @@
             text-align: center;
         }
         
-        /* Header Styles */
+        /* Header Styles (same as homepage) */
         header {
             position: fixed;
             top: 0;
@@ -184,72 +184,48 @@
             color: var(--dark);
         }
         
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
+        /* Contact Page Specific Styles */
+        .contact-hero {
             background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(255, 255, 255, 1) 100%);
+            padding: 180px 0 100px;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
         
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(72, 149, 239, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
-            z-index: -1;
+        .contact-hero h1 {
+            margin-bottom: 1rem;
         }
         
-        .hero-content {
-            max-width: 600px;
-        }
-        
-        .hero h1 {
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .hero-btns {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .hero-image {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 50%;
+        .contact-hero p {
             max-width: 700px;
-            z-index: -1;
+            margin: 0 auto;
+            font-size: 1.2rem;
         }
         
-        /* Features Section */
-        .features {
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        
+        .contact-info {
             background-color: var(--light);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
-        .section-header {
-            margin-bottom: 60px;
-        }
-        
-        .section-header h2 {
+        .contact-info h2 {
+            margin-bottom: 30px;
             position: relative;
-            display: inline-block;
         }
         
-        .section-header h2::after {
+        .contact-info h2::after {
             content: '';
             position: absolute;
-            width: 50%;
+            width: 50px;
             height: 4px;
             bottom: -10px;
             left: 0;
@@ -257,157 +233,118 @@
             border-radius: 2px;
         }
         
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        .info-item {
+            display: flex;
+            margin-bottom: 30px;
         }
         
-        .feature-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
+        .info-icon {
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
+            margin-right: 20px;
+            flex-shrink: 0;
         }
         
-        /* Testimonials Section */
-        .testimonials {
-            position: relative;
+        .info-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
         }
         
-        .testimonials::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background-color: var(--light);
-            z-index: -1;
+        .info-content p {
+            margin-bottom: 0;
         }
         
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        .info-content a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
         
-        .testimonial-card {
+        .info-content a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+        
+        .contact-form {
             background-color: white;
             border-radius: 10px;
-            padding: 30px;
+            padding: 40px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-form h2 {
+            margin-bottom: 30px;
             position: relative;
         }
         
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 5rem;
-            color: rgba(67, 97, 238, 0.1);
-            font-family: Georgia, serif;
-            line-height: 1;
-        }
-        
-        .testimonial-content {
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-            object-fit: cover;
-        }
-        
-        .author-info h4 {
-            margin-bottom: 0;
-        }
-        
-        .author-info p {
-            margin-bottom: 0;
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-        
-        /* CTA Section */
-        .cta {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            text-align: center;
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta::before {
+        .contact-form h2::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
-            z-index: 0;
+            width: 50px;
+            height: 4px;
+            bottom: -10px;
+            left: 0;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
         }
         
-        .cta-content {
-            position: relative;
-            z-index: 1;
+        .form-group {
+            margin-bottom: 20px;
         }
         
-        .cta h2 {
-            margin-bottom: 1.5rem;
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
         
-        .cta p {
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 700px;
-            margin: 0 auto 2rem;
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
         }
         
-        .cta .btn {
-            background-color: white;
-            color: var(--primary);
-            border: 2px solid white;
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
         }
         
-        .cta .btn:hover {
-            background-color: transparent;
-            color: white;
-            transform: translateY(-2px);
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
         }
         
-        /* Footer */
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+        }
+        
+        .map-container {
+            margin-top: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+        
+        /* Footer (same as homepage) */
         footer {
             background-color: var(--dark);
             color: white;
@@ -484,10 +421,6 @@
             h2 {
                 font-size: 2.2rem;
             }
-            
-            .hero-image {
-                opacity: 0.3;
-            }
         }
         
         @media (max-width: 768px) {
@@ -519,25 +452,12 @@
                 display: block;
             }
             
-            .hero {
-                text-align: center;
-                padding-top: 100px;
+            .contact-container {
+                grid-template-columns: 1fr;
             }
             
-            .hero-content {
-                max-width: 100%;
-            }
-            
-            .hero-btns {
-                justify-content: center;
-            }
-            
-            .hero-image {
-                display: none;
-            }
-            
-            section {
-                padding: 60px 0;
+            .contact-hero {
+                padding: 150px 0 80px;
             }
         }
         
@@ -554,9 +474,17 @@
                 padding: 10px 20px;
             }
             
-            .hero-btns {
+            .contact-info,
+            .contact-form {
+                padding: 30px 20px;
+            }
+            
+            .info-item {
                 flex-direction: column;
-                gap: 10px;
+            }
+            
+            .info-icon {
+                margin-bottom: 15px;
             }
         }
     </style>
@@ -565,147 +493,118 @@
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
-            <a href="#" class="logo">Lumi<span>na</span></a>
+            <a href="index.html" class="logo">Lumi<span>na</span></a>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
             <nav id="nav">
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="static.html">Home</a></li>
                     <li><a href="#">Features</a></li>
                     <li><a href="#">Solutions</a></li>
                     <li><a href="#">Pricing</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>Transform Your Digital Experience</h1>
-                <p>Lumina delivers cutting-edge solutions that empower businesses to thrive in the digital landscape. Our innovative approach combines technology and creativity.</p>
-                <div class="hero-btns">
-                    <a href="#" class="btn btn-primary">Get Started</a>
-                    <a href="#" class="btn btn-outline">Learn More</a>
-                </div>
-            </div>
-            <img src="https://via.placeholder.com/800x600/4361ee/ffffff?text=Hero+Image" alt="Hero Image" class="hero-image">
+            <h1>Get In Touch</h1>
+            <p>We'd love to hear from you! Whether you have a question about our services, pricing, or anything else, our team is ready to answer all your questions.</p>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
+    <!-- Contact Content -->
+    <section class="contact-content">
         <div class="container">
-            <div class="section-header text-center">
-                <h2>Our Powerful Features</h2>
-                <p>Discover how our features can help you achieve your business goals</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Contact Information</h2>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Our Headquarters</h3>
+                            <p>123 Tech Park Avenue<br>San Francisco, CA 94107<br>United States</p>
+                        </div>
                     </div>
-                    <h3>Lightning Fast</h3>
-                    <p>Our optimized solutions deliver unparalleled speed and performance for your digital projects.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Email Us</h3>
+                            <p><a href="mailto:info@lumina.com">info@lumina.com</a><br>
+                            <a href="mailto:support@lumina.com">support@lumina.com</a></p>
+                        </div>
                     </div>
-                    <h3>Secure & Reliable</h3>
-                    <p>Enterprise-grade security measures to protect your data and ensure maximum uptime.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-cogs"></i>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Call Us</h3>
+                            <p><a href="tel:+18005551234">+1 (800) 555-1234</a><br>
+                            <a href="tel:+14155556789">+1 (415) 555-6789</a></p>
+                        </div>
                     </div>
-                    <h3>Easy Integration</h3>
-                    <p>Seamlessly connect with your existing tools and workflows with our flexible API.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Advanced Analytics</h3>
-                    <p>Gain valuable insights with our comprehensive analytics dashboard and reporting tools.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Mobile Ready</h3>
-                    <p>Fully responsive designs that look and work perfectly on any device or screen size.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>24/7 Support</h3>
-                    <p>Our dedicated support team is always available to help you with any questions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-header text-center">
-                <h2>What Our Clients Say</h2>
-                <p>Don't just take our word for it - hear from our satisfied customers</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>Lumina has completely transformed our online presence. Their team delivered beyond our expectations and provided exceptional support throughout the process.</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Sarah Johnson</h4>
-                            <p>CEO, TechSolutions</p>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Working Hours</h3>
+                            <p>Monday - Friday: 9am - 6pm<br>
+                            Saturday: 10am - 4pm<br>
+                            Sunday: Closed</p>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>The analytics tools provided by Lumina gave us insights we never had before. We've increased our conversion rate by 35% in just three months!</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Michael Chen</h4>
-                            <p>Marketing Director, BrightEdge</p>
+                
+                <div class="contact-form">
+                    <h2>Send Us a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
                         </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>As a small business, we needed an affordable yet powerful solution. Lumina delivered exactly what we needed with their customizable packages.</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Emily Rodriguez</h4>
-                            <p>Owner, Bloom Boutique</p>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
                         </div>
-                    </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number (Optional)</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary submit-btn">Send Message</button>
+                    </form>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Transform Your Business?</h2>
-                <p>Join thousands of satisfied customers who have already discovered the power of Lumina. Start your journey today with our risk-free trial.</p>
-                <a href="#" class="btn">Start Free Trial</a>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.681665785982!2d-122.3999726846824!3d37.78688297975923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085807d10af6e51%3A0x1122879c36e6d3aa!2s123%20Tech%20Park%20Ave%2C%20San%20Francisco%2C%20CA%2094107%2C%20USA!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
@@ -749,7 +648,7 @@
                     <ul>
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                         <li><a href="#">Partners</a></li>
                         <li><a href="#">Press</a></li>
                     </ul>
@@ -781,6 +680,18 @@
             } else {
                 header.classList.remove('scrolled');
             }
+        });
+        
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to a server
+            // For this example, we'll just show an alert
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
         });
     </script>
 </body>
