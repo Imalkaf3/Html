@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumina - Creative Solutions</title>
+    <title>About Us | Lumina - Creative Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Global Styles */
+        /* Reusing the same global styles from homepage */
         :root {
             --primary: #4361ee;
             --secondary: #3f37c9;
@@ -104,7 +104,7 @@
             text-align: center;
         }
         
-        /* Header Styles */
+        /* Header Styles (same as homepage) */
         header {
             position: fixed;
             top: 0;
@@ -175,6 +175,15 @@
             width: 100%;
         }
         
+        nav ul li a.active {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        nav ul li a.active::after {
+            width: 100%;
+        }
+        
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -184,230 +193,181 @@
             color: var(--dark);
         }
         
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
+        /* About Page Specific Styles */
+        .about-hero {
             background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(255, 255, 255, 1) 100%);
+            padding: 180px 0 100px;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
         
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(72, 149, 239, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
-            z-index: -1;
+        .about-hero h1 {
+            margin-bottom: 1rem;
         }
         
-        .hero-content {
-            max-width: 600px;
-        }
-        
-        .hero h1 {
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .hero-btns {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .hero-image {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 50%;
+        .about-hero p {
             max-width: 700px;
-            z-index: -1;
+            margin: 0 auto;
+            font-size: 1.2rem;
         }
         
-        /* Features Section */
-        .features {
+        .about-story {
             background-color: var(--light);
         }
         
-        .section-header {
-            margin-bottom: 60px;
-        }
-        
-        .section-header h2 {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 4px;
-            bottom: -10px;
-            left: 0;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            border-radius: 2px;
-        }
-        
-        .features-grid {
+        .story-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
         }
         
-        .feature-card {
-            background-color: white;
+        .story-content {
+            padding-right: 40px;
+        }
+        
+        .story-image {
             border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
+            overflow: hidden;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
-        .feature-icon {
-            width: 60px;
-            height: 60px;
+        .story-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .mission-values {
+            background-color: white;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .value-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
             color: white;
-            font-size: 1.5rem;
+            font-size: 2rem;
         }
         
-        /* Testimonials Section */
-        .testimonials {
-            position: relative;
-        }
-        
-        .testimonials::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
+        .team-section {
             background-color: var(--light);
-            z-index: -1;
         }
         
-        .testimonials-grid {
+        .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
+            margin-top: 50px;
         }
         
-        .testimonial-card {
+        .team-member {
             background-color: white;
             border-radius: 10px;
-            padding: 30px;
+            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
+            text-align: center;
+            transition: transform 0.3s ease;
         }
         
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 5rem;
-            color: rgba(67, 97, 238, 0.1);
-            font-family: Georgia, serif;
-            line-height: 1;
+        .team-member:hover {
+            transform: translateY(-10px);
         }
         
-        .testimonial-content {
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
+        .member-image {
+            width: 100%;
+            height: 250px;
             object-fit: cover;
         }
         
-        .author-info h4 {
-            margin-bottom: 0;
+        .member-info {
+            padding: 25px;
         }
         
-        .author-info p {
-            margin-bottom: 0;
-            font-size: 0.9rem;
-            color: var(--gray);
+        .member-info h3 {
+            margin-bottom: 5px;
         }
         
-        /* CTA Section */
-        .cta {
+        .member-info p.position {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .member-social a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--light);
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .member-social a:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Stats Section */
+        .stats-section {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             text-align: center;
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
+            padding: 80px 0;
         }
         
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
-            z-index: 0;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
         }
         
-        .cta-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .cta h2 {
-            margin-bottom: 1.5rem;
-        }
-        
-        .cta p {
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-        
-        .cta .btn {
-            background-color: white;
-            color: var(--primary);
-            border: 2px solid white;
-        }
-        
-        .cta .btn:hover {
-            background-color: transparent;
+        .stat-item h3 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
             color: white;
-            transform: translateY(-2px);
         }
         
-        /* Footer */
+        .stat-item p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+        
+        /* Footer (same as homepage) */
         footer {
             background-color: var(--dark);
             color: white;
@@ -485,8 +445,13 @@
                 font-size: 2.2rem;
             }
             
-            .hero-image {
-                opacity: 0.3;
+            .story-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .story-content {
+                padding-right: 0;
+                margin-bottom: 40px;
             }
         }
         
@@ -519,25 +484,12 @@
                 display: block;
             }
             
-            .hero {
-                text-align: center;
-                padding-top: 100px;
+            .about-hero {
+                padding: 150px 0 80px;
             }
             
-            .hero-content {
-                max-width: 100%;
-            }
-            
-            .hero-btns {
-                justify-content: center;
-            }
-            
-            .hero-image {
-                display: none;
-            }
-            
-            section {
-                padding: 60px 0;
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
@@ -554,9 +506,8 @@
                 padding: 10px 20px;
             }
             
-            .hero-btns {
-                flex-direction: column;
-                gap: 10px;
+            .stats-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -565,133 +516,159 @@
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
-            <a href="#" class="logo">Lumi<span>na</span></a>
+            <a href="index.html" class="logo">Lumi<span>na</span></a>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
             <nav id="nav">
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="static.html">Home</a></li>
                     <li><a href="feature.html">Features</a></li>
                     <li><a href="solution.html">Solutions</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- About Hero Section -->
+    <section class="about-hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>Transform Your Digital Experience</h1>
-                <p>Lumina delivers cutting-edge solutions that empower businesses to thrive in the digital landscape. Our innovative approach combines technology and creativity.</p>
-                <div class="hero-btns">
-                    <a href="#" class="btn btn-primary">Get Started</a>
-                    <a href="#" class="btn btn-outline">Learn More</a>
-                </div>
-            </div>
-            <img src="photo_2025-05-18_21-42-17.png" alt="Hero Image" class="hero-image">
+            <h1>Our Story</h1>
+            <p>Discover the people, values, and passion behind Lumina's innovative solutions that are transforming businesses worldwide.</p>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
+    <!-- Our Story Section -->
+    <section class="about-story">
+        <div class="container">
+            <div class="story-container">
+                <div class="story-content">
+                    <h2>From Humble Beginnings to Industry Leaders</h2>
+                    <p>Founded in 2015 by a team of passionate technologists, Lumina started as a small startup with a big vision: to make cutting-edge digital solutions accessible to businesses of all sizes.</p>
+                    <p>What began as a three-person operation in a shared workspace has grown into an industry-leading company with offices in three countries and a team of over 150 dedicated professionals.</p>
+                    <p>Our journey hasn't always been easy, but our commitment to innovation, quality, and customer satisfaction has remained constant. Every challenge we've faced has only strengthened our resolve to deliver exceptional solutions.</p>
+                </div>
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Our team working together">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values Section -->
+    <section class="mission-values">
         <div class="container">
             <div class="section-header text-center">
-                <h2>Our Powerful Features</h2>
-                <p>Discover how our features can help you achieve your business goals</p>
+                <h2>Our Mission & Values</h2>
+                <p>The principles that guide everything we do at Lumina</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-bullseye"></i>
                     </div>
-                    <h3>Lightning Fast</h3>
-                    <p>Our optimized solutions deliver unparalleled speed and performance for your digital projects.</p>
+                    <h3>Our Mission</h3>
+                    <p>To empower businesses with innovative digital solutions that drive growth, efficiency, and competitive advantage in an ever-evolving technological landscape.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
                     </div>
-                    <h3>Secure & Reliable</h3>
-                    <p>Enterprise-grade security measures to protect your data and ensure maximum uptime.</p>
+                    <h3>Innovation</h3>
+                    <p>We constantly push boundaries and challenge the status quo to deliver cutting-edge solutions that set our clients apart from their competition.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-cogs"></i>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
                     </div>
-                    <h3>Easy Integration</h3>
-                    <p>Seamlessly connect with your existing tools and workflows with our flexible API.</p>
+                    <h3>Integrity</h3>
+                    <p>We believe in doing business with honesty, transparency, and fairness. Our relationships with clients and partners are built on trust.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
                     </div>
-                    <h3>Advanced Analytics</h3>
-                    <p>Gain valuable insights with our comprehensive analytics dashboard and reporting tools.</p>
+                    <h3>Collaboration</h3>
+                    <p>Great things happen when we work together. We value teamwork both within our organization and with our clients.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-star"></i>
                     </div>
-                    <h3>Mobile Ready</h3>
-                    <p>Fully responsive designs that look and work perfectly on any device or screen size.</p>
+                    <h3>Excellence</h3>
+                    <p>We're committed to delivering exceptional quality in everything we do, from product development to customer support.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
                     </div>
-                    <h3>24/7 Support</h3>
-                    <p>Our dedicated support team is always available to help you with any questions.</p>
+                    <h3>Passion</h3>
+                    <p>We love what we do, and it shows in the energy and enthusiasm we bring to every project and client relationship.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
+    <!-- Team Section -->
+    <section class="team-section">
         <div class="container">
             <div class="section-header text-center">
-                <h2>What Our Clients Say</h2>
-                <p>Don't just take our word for it - hear from our satisfied customers</p>
+                <h2>Meet Our Leadership Team</h2>
+                <p>The brilliant minds driving Lumina forward</p>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>Lumina has completely transformed our online presence. Their team delivered beyond our expectations and provided exceptional support throughout the process.</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Sarah Johnson</h4>
-                            <p>CEO, TechSolutions</p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah Johnson" class="member-image">
+                    <div class="member-info">
+                        <h3>Sarah Johnson</h3>
+                        <p class="position">CEO & Founder</p>
+                        <p>Visionary leader with 15+ years in tech innovation and business strategy.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>The analytics tools provided by Lumina gave us insights we never had before. We've increased our conversion rate by 35% in just three months!</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Michael Chen</h4>
-                            <p>Marketing Director, BrightEdge</p>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="member-image">
+                    <div class="member-info">
+                        <h3>Michael Chen</h3>
+                        <p class="position">CTO</p>
+                        <p>Tech wizard specializing in scalable architectures and emerging technologies.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>As a small business, we needed an affordable yet powerful solution. Lumina delivered exactly what we needed with their customizable packages.</p>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez" class="member-image">
+                    <div class="member-info">
+                        <h3>Emily Rodriguez</h3>
+                        <p class="position">VP of Product</p>
+                        <p>Product strategist focused on user-centered design and market fit.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
                     </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Emily Rodriguez</h4>
-                            <p>Owner, Bloom Boutique</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David Kim" class="member-image">
+                    <div class="member-info">
+                        <h3>David Kim</h3>
+                        <p class="position">VP of Engineering</p>
+                        <p>Engineering leader passionate about building high-performance teams.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
@@ -699,13 +676,26 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
+    <!-- Stats Section -->
+    <section class="stats-section">
         <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Transform Your Business?</h2>
-                <p>Join thousands of satisfied customers who have already discovered the power of Lumina. Start your journey today with our risk-free trial.</p>
-                <a href="#" class="btn">Start Free Trial</a>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>150+</h3>
+                    <p>Team Members</p>
+                </div>
+                <div class="stat-item">
+                    <h3>8</h3>
+                    <p>Years in Business</p>
+                </div>
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Clients Worldwide</p>
+                </div>
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>Client Retention</p>
+                </div>
             </div>
         </div>
     </section>
@@ -747,9 +737,9 @@
                 <div class="footer-col">
                     <h3>Company</h3>
                     <ul>
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="about.html">About Us</a></li>
                         <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                         <li><a href="#">Partners</a></li>
                         <li><a href="#">Press</a></li>
                     </ul>
