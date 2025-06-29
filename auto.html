@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Miraj - Premium Auto Body Shop | Beruwala</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#003366',
+                        secondary: '#C0C0C0',
+                        accent: '#FFD700',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .contact-info {
+            display: none;
+        }
+        .contact-info.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header/Navigation -->
+    <header class="bg-primary text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-car text-accent text-3xl mr-3"></i>
+                <h1 class="text-2xl font-bold">Auto Miraj</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-accent transition">Home</a>
+                <a href="#services" class="hover:text-accent transition">Services</a>
+                <a href="#about" class="hover:text-accent transition">About</a>
+                <a href="#gallery" class="hover:text-accent transition">Gallery</a>
+                <a href="#testimonials" class="hover:text-accent transition">Testimonials</a>
+                <a href="#contact" id="contact-link" class="hover:text-accent transition">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-primary-dark pb-4">
+            <a href="#home" class="block px-4 py-2 hover:bg-primary-light">Home</a>
+            <a href="#services" class="block px-4 py-2 hover:bg-primary-light">Services</a>
+            <a href="#about" class="block px-4 py-2 hover:bg-primary-light">About</a>
+            <a href="#gallery" class="block px-4 py-2 hover:bg-primary-light">Gallery</a>
+            <a href="#testimonials" class="block px-4 py-2 hover:bg-primary-light">Testimonials</a>
+            <a href="#contact" class="block px-4 py-2 hover:bg-primary-light mobile-contact-link">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1608500218807-1a5c1ae0b9db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative z-10 text-center text-white px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Beruwala's Trusted Auto Body Experts</h1>
+            <p class="text-xl md:text-2xl mb-8">Professional auto body repair and maintenance services you can trust</p>
+            <a href="#contact" class="bg-accent text-primary font-bold px-8 py-3 rounded-lg hover:bg-yellow-600 transition">Contact Us Now</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-primary mb-12">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="text-accent text-4xl mb-4">
+                        <i class="fas fa-car-crash"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">Full Body Repairs</h3>
+                    <p class="text-gray-600">Comprehensive collision repair services to restore your vehicle to its original condition.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="text-accent text-4xl mb-4">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">Paint Jobs</h3>
+                    <p class="text-gray-600">Professional painting services with high-quality materials and flawless finishes.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="text-accent text-4xl mb-4">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">Dent Removal</h3>
+                    <p class="text-gray-600">Paintless dent removal techniques to fix dents without affecting your vehicle's original paint.</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="text-accent text-4xl mb-4">
+                        <i class="fas fa-oil-can"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">Oil Change Packages</h3>
+                    <p class="text-gray-600">Regular maintenance packages including oil changes, filter replacements and fluid checks.</p>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="text-accent text-4xl mb-4">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">Custom Modifications</h3>
+                    <p class="text-gray-600">Personalized vehicle modifications to enhance performance and appearance.</p>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="text-accent text-4xl mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">Rust Protection</h3>
+                    <p class="text-gray-600">Advanced rust protection treatments to preserve your vehicle's body and frame.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Why Choose Auto Miraj?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-accent text-4xl mb-4">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">5+ Years of Excellence</h3>
+                    <p>Trusted service provider in Beruwala with a proven track record</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-accent text-4xl mb-4">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Certified Technicians</h3>
+                    <p>Skilled professionals with proper training and certifications</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-accent text-4xl mb-4">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Competitive Pricing</h3>
+                    <p>High quality services at reasonable prices</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-accent text-4xl mb-4">
+                        <i class="fas fa-thumbs-up"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Satisfaction Guarantee</h3>
+                    <p>We stand behind our work with a customer satisfaction guarantee</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Auto Miraj Workshop" 
+                         class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-primary mb-6">About Auto Miraj</h2>
+                    <p class="text-gray-600 mb-4">Auto Miraj has been serving the Beruwala community for over 5 years, providing top-quality auto body repair and maintenance services.</p>
+                    <p class="text-gray-600 mb-4">Founded by Mahietheja Priyadarshana, our shop has built a reputation for trustworthy, friendly, and brilliant service at reasonable prices.</p>
+                    <p class="text-gray-600 mb-6">We take pride in our work and treat every vehicle as if it were our own, ensuring complete customer satisfaction with every job.</p>
+                    <div class="flex items-center">
+                        <div class="bg-primary text-white p-4 rounded-full mr-4">
+                            <i class="fas fa-phone-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-gray-500">Call us anytime</p>
+                            <p class="text-xl font-bold text-primary">+94 76 123 4567</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-primary mb-12">Our Work Gallery</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Gallery items would be populated with actual photos -->
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Before and After Repair" 
+                         class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Car Painting" 
+                         class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Detailing Service" 
+                         class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Engine Work" 
+                         class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Car Wash" 
+                         class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Custom Modifications" 
+                         class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+<section id="videos" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-primary mb-12">Our Work Videos</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <!-- Video items -->
+            <div class="video-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition">
+                <div class="relative w-full h-64">
+                    <iframe class="w-full h-full object-cover" 
+                            src="https://www.youtube.com/embed/VIDEO_ID_1" 
+                            title="Car Repair Process" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <div class="video-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition">
+                <div class="relative w-full h-64">
+                    <iframe class="w-full h-full object-cover" 
+                            src="https://www.youtube.com/embed/VIDEO_ID_2" 
+                            title="Paint Job Showcase" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <div class="video-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition">
+                <div class="relative w-full h-64">
+                    <iframe class="w-full h-full object-cover" 
+                            src="https://www.youtube.com/embed/VIDEO_ID_3" 
+                            title="Detailing Service" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-accent text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="italic mb-4">"The best service provider in the area. They provide trustworthy, friendly and brilliant service for reasonable prices. Recommend for all kind of automobile services."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ryan Cooray" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Ryan Cooray</h4>
+                            <p class="text-sm text-gray-500">Local Guide</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-accent text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="italic mb-4">"Recently did a service for a car. Did a good job. There was a Luk oil promotional service package. Good job."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Sunil Reisen" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Sunil Reisen</h4>
+                            <p class="text-sm text-gray-500">Customer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-accent text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="italic mb-4">"Since last 5 years coming here. Excellent service."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Mahietheja Priyadarshana" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Mahietheja Priyadarshana</h4>
+                            <p class="text-sm text-gray-500">Customer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-primary mb-12">Contact Information</h2>
+            <div class="max-w-3xl mx-auto bg-gray-50 p-8 rounded-lg shadow-md">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Contact Info -->
+                    <div>
+                        <h3 class="text-xl font-bold text-primary mb-4">Get In Touch</h3>
+                        
+                        <div class="flex items-start mb-4">
+                            <div class="bg-primary text-white p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Address</h4>
+                                <p class="text-gray-600">123 Galle Road, Beruwala, Sri Lanka</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <div class="bg-primary text-white p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Call Us</h4>
+                                <p class="text-gray-600">+94 76 123 4567</p>
+                                <p class="text-gray-600">+94 76 987 6543</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <div class="bg-primary text-white p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Email Us</h4>
+                                <p class="text-gray-600">info@automiraj.lk</p>
+                                <p class="text-gray-600">support@automiraj.lk</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media -->
+                    <div>
+                        <h3 class="text-xl font-bold text-primary mb-4">Connect With Us</h3>
+                        
+                        <div class="flex items-start mb-4">
+                            <div class="bg-primary text-white p-3 rounded-full mr-4">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">WhatsApp</h4>
+                                <a href="https://wa.me/94761234567" class="text-gray-600 hover:text-accent transition">+94 76 123 4567</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <div class="bg-primary text-white p-3 rounded-full mr-4">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Facebook</h4>
+                                <a href="https://facebook.com/automiraj" class="text-gray-600 hover:text-accent transition">facebook.com/automiraj</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-4">
+                            <div class="bg-primary text-white p-3 rounded-full mr-4">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Business Hours</h4>
+                                <p class="text-gray-600">Monday - Saturday: 8:30 AM - 6:00 PM</p>
+                                <p class="text-gray-600">Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Map -->
+                <div class="mt-8 h-64 bg-gray-200 rounded-lg overflow-hidden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.479574867658!2d79.98461467397438!3d6.460761923891314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae22e159d2679e7%3A0x90269a57bb0e98ba!2sAuto%20Miraj%20Beruwala!5e0!3m2!1sen!2slk!4v1750901621740!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <i class="fas fa-car text-accent text-3xl mr-3"></i>
+                        <h2 class="text-2xl font-bold">Auto Miraj</h2>
+                    </div>
+                    <p class="mt-2 text-gray-400">Beruwala's trusted auto body shop since 2018</p>
+                </div>
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#" class="text-gray-400 hover:text-accent transition text-2xl">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-accent transition text-2xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-accent transition text-2xl">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-accent transition text-2xl">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400">© 2023 Auto Miraj. All rights reserved.</p>
+                    <p class="text-gray-400">Designed with <i class="fas fa-heart text-accent"></i> for car enthusiasts</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-accent text-primary p-3 rounded-full shadow-lg hidden">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Make WhatsApp number clickable
+        const whatsappNumbers = document.querySelectorAll('.whatsapp-link');
+        whatsappNumbers.forEach(number => {
+            number.addEventListener('click', () => {
+                window.open(`https://wa.me/${number.textContent.replace(/\D/g, '')}`, '_blank');
+            });
+        });
+    </script>
+</body>
+</html>

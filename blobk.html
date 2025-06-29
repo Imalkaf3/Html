@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Block Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .session {
+            margin-bottom: 30px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .session-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #444;
+        }
+        .blocks-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .block {
+            padding: 15px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            flex: 1;
+            min-width: 100px;
+            transition: all 0.3s;
+        }
+        .work-block {
+            background-color: #e3f2fd;
+            color: #1565c0;
+            border: 2px solid #bbdefb;
+        }
+        .work-block.completed {
+            background-color: #c8e6c9;
+            color: #2e7d32;
+            border-color: #a5d6a7;
+        }
+        .break-block {
+            background-color: #fff3e0;
+            color: #e65100;
+            border: 2px solid #ffe0b2;
+        }
+        .break-block.completed {
+            background-color: #d7ccc8;
+            color: #5d4037;
+            border-color: #bcaaa4;
+        }
+        .stats {
+            margin-top: 30px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .reset-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .reset-btn:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Time Block Tracker</h1>
+    
+    <div class="session">
+        <div class="session-title">After Breakfast</div>
+        <div class="blocks-container" id="breakfast-blocks"></div>
+    </div>
+    
+    <div class="session">
+        <div class="session-title">After Lunch</div>
+        <div class="blocks-container" id="lunch-blocks"></div>
+    </div>
+    
+    <div class="session">
+        <div class="session-title">After Dinner</div>
+        <div class="blocks-container" id="dinner-blocks"></div>
+    </div>
+    
+    <div class="stats">
+        <h3>Today's Progress</h3>
+        <p>Work Blocks Completed: <span id="work-completed">0</span>/9</p>
+        <p>Break Blocks Completed: <span id="break-completed">0</span>/6</p>
+    </div>
+    
+    <button class="reset-btn" id="reset-btn">Reset All</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize blocks for each session
+            createBlocks('breakfast-blocks', 3);
+            createBlocks('lunch-blocks', 3);
+            createBlocks('dinner-blocks', 3);
+            
+            // Load saved progress if available
+            loadProgress();
+            
+            // Update stats display
+            updateStats();
+            
+            // Reset button functionality
+            document.getElementById('reset-btn').addEventListener('click', function() {
+                if (confirm('Are you sure you want to reset all blocks?')) {
+                    resetAllBlocks();
+                    updateStats();
+                }
+            });
+        });
+        
+        function createBlocks(containerId, workBlockCount) {
+            const container = document.getElementById(containerId);
+            
+            for (let i = 0; i < workBlockCount; i++) {
+                // Add work block
+                const workBlock = document.createElement('div');
+                workBlock.className = 'block work-block';
+                workBlock.textContent = 'Work 30m';
+                workBlock.dataset.type = 'work';
+                workBlock.addEventListener('click', function() {
+                    this.classList.toggle('completed');
+                    saveProgress();
+                    updateStats();
+                });
+                container.appendChild(workBlock);
+                
+                // Add break block (except after last work block)
+                if (i < workBlockCount - 1) {
+                    const breakBlock = document.createElement('div');
+                    breakBlock.className = 'block break-block';
+                    breakBlock.textContent = 'Break 15m';
+                    breakBlock.dataset.type = 'break';
+                    breakBlock.addEventListener('click', function() {
+                        this.classList.toggle('completed');
+                        saveProgress();
+                        updateStats();
+                    });
+                    container.appendChild(breakBlock);
+                }
+            }
+        }
+        
+        function saveProgress() {
+            const progress = {
+                breakfast: getBlockStates('breakfast-blocks'),
+                lunch: getBlockStates('lunch-blocks'),
+                dinner: getBlockStates('dinner-blocks'),
+                date: new Date().toDateString()
+            };
+            localStorage.setItem('timeBlockProgress', JSON.stringify(progress));
+        }
+        
+        function loadProgress() {
+            const saved = localStorage.getItem('timeBlockProgress');
+            if (saved) {
+                const progress = JSON.parse(saved);
+                
+                // Only load if it's from today
+                if (progress.date === new Date().toDateString()) {
+                    setBlockStates('breakfast-blocks', progress.breakfast);
+                    setBlockStates('lunch-blocks', progress.lunch);
+                    setBlockStates('dinner-blocks', progress.dinner);
+                } else {
+                    // Clear old data
+                    localStorage.removeItem('timeBlockProgress');
+                }
+            }
+        }
+        
+        function getBlockStates(containerId) {
+            const container = document.getElementById(containerId);
+            const blocks = container.querySelectorAll('.block');
+            const states = [];
+            
+            blocks.forEach(block => {
+                states.push({
+                    type: block.dataset.type,
+                    completed: block.classList.contains('completed')
+                });
+            });
+            
+            return states;
+        }
+        
+        function setBlockStates(containerId, states) {
+            const container = document.getElementById(containerId);
+            const blocks = container.querySelectorAll('.block');
+            
+            states.forEach((state, index) => {
+                if (index < blocks.length) {
+                    if (state.completed) {
+                        blocks[index].classList.add('completed');
+                    } else {
+                        blocks[index].classList.remove('completed');
+                    }
+                }
+            });
+        }
+        
+        function resetAllBlocks() {
+            const allBlocks = document.querySelectorAll('.block');
+            allBlocks.forEach(block => {
+                block.classList.remove('completed');
+            });
+            localStorage.removeItem('timeBlockProgress');
+        }
+        
+        function updateStats() {
+            const workBlocks = document.querySelectorAll('.work-block');
+            const breakBlocks = document.querySelectorAll('.break-block');
+            
+            let completedWork = 0;
+            let completedBreak = 0;
+            
+            workBlocks.forEach(block => {
+                if (block.classList.contains('completed')) completedWork++;
+            });
+            
+            breakBlocks.forEach(block => {
+                if (block.classList.contains('completed')) completedBreak++;
+            });
+            
+            document.getElementById('work-completed').textContent = completedWork;
+            document.getElementById('break-completed').textContent = completedBreak;
+        }
+    </script>
+</body>
+</html>

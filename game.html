@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Car Game with Obstacles</title>
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+    }
+
+    #game {
+      position: relative;
+      width: 400px;
+      height: 600px;
+      background: #333;
+      overflow: hidden;
+      border: 5px solid white;
+    }
+
+    #car {
+      position: absolute;
+      bottom: 20px;
+      left: 180px;
+      width: 40px;
+      height: 80px;
+      background: red;
+      border-radius: 8px;
+      box-shadow: 0 0 10px black;
+    }
+
+    .road-line {
+      position: absolute;
+      width: 10px;
+      height: 40px;
+      background: white;
+      left: 195px;
+    }
+
+    .obstacle {
+      position: absolute;
+      width: 40px;
+      height: 80px;
+      background: yellow;
+      border-radius: 8px;
+    }
+
+    #game-over {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      font-size: 36px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="game">
+    <div id="car"></div>
+    <div id="game-over">Game Over</div>
+  </div>
+
+  <script>
+    const car = document.getElementById("car");
+    const game = document.getElementById("game");
+    const gameOverScreen = document.getElementById("game-over");
+    let carLeft = 180;
+    let isGameOver = false;
+
+    // Create road lines
+    const lines = [];
+    for (let i = 0; i < 6; i++) {
+      const line = document.createElement("div");
+      line.className = "road-line";
+      line.style.top = `${i * 100}px`;
+      game.appendChild(line);
+      lines.push(line);
+    }
+
+    // Create one obstacle for now
+    const obstacle = document.createElement("div");
+    obstacle.className = "obstacle";
+    resetObstacle();
+    game.appendChild(obstacle);
+
+    // Move car
+    document.addEventListener("keydown", (e) => {
+      if (isGameOver) return;
+      if (e.key === "ArrowLeft" && carLeft > 0) {
+        carLeft -= 10;
+        car.style.left = carLeft + "px";
+      } else if (e.key === "ArrowRight" && carLeft < 360) {
+        carLeft += 10;
+        car.style.left = carLeft + "px";
+      }
+    });
+
+    function resetObstacle() {
+      obstacle.style.top = "-100px";
+      const randomLeft = Math.floor(Math.random() * 8) * 40; // 0 to 360 in steps of 40
+      obstacle.style.left = `${randomLeft}px`;
+    }
+
+    function detectCollision() {
+      const carRect = car.getBoundingClientRect();
+      const obsRect = obstacle.getBoundingClientRect();
+
+      return !(
+        carRect.bottom < obsRect.top ||
+        carRect.top > obsRect.bottom ||
+        carRect.right < obsRect.left ||
+        carRect.left > obsRect.right
+      );
+    }
+
+    // Game loop
+    function gameLoop() {
+      if (isGameOver) return;
+
+      // Move road lines
+      lines.forEach(line => {
+        let top = parseInt(line.style.top);
+        top += 5;
+        if (top > 600) top = -40;
+        line.style.top = `${top}px`;
+      });
+
+      // Move obstacle
+      let obsTop = parseInt(obstacle.style.top);
+      obsTop += 5;
+      obstacle.style.top = `${obsTop}px`;
+
+      if (obsTop > 600) {
+        resetObstacle();
+      }
+
+      // Collision detection
+      if (detectCollision()) {
+        gameOverScreen.style.display = "flex";
+        isGameOver = true;
+      }
+
+      requestAnimationFrame(gameLoop);
+    }
+
+    gameLoop();
+  </script>
+</body>
+</html>
